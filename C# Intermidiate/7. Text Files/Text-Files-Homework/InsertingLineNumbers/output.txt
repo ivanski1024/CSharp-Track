@@ -1,0 +1,28 @@
+1. using System;
+2. using System.Collections.Generic;
+3. using System.IO;
+4. using System.Linq;
+5. using System.Text;
+6. using System.Threading.Tasks;
+7. 
+8. namespace InsertingLineNumbers
+9. {
+10.     class InsertingLineNumbers
+11.     {
+12.         static void Main()
+13.         {
+14.             StreamReader input = new StreamReader("../../input.txt");
+15.             StreamWriter output = new StreamWriter("../../output.txt");
+16.             string line;
+17.             int lineNumber=1;
+18.             do
+19.             {
+20.                 line = input.ReadLine();
+21.                 output.WriteLine("{0}. {1}", lineNumber, line);
+22.                 lineNumber++;
+23.             }
+24.             while (line != null);
+25.         }
+26.     }
+27. }
+28. 

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JustCodeSettings Version="0.0" Timestamp="0163ca66-e3b4-4240-a7bc-f784d8050f52">
+  <IgnoredErrorsAndWarningsSettings xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+    <IgnoredErrorsAndWarnings>
+      <FilePath>
+        <Path>E:\Work\Telerik Academy\C# course\Part 2 - C# Intermidiate\7. Text Files\Text-Files-Homework\ReplaceStartWithFinish\ReplaceStartWithFinish.cs</Path>
+        <ProjectFullName>E:\Work\Telerik Academy\C# course\Part 2 - C# Intermidiate\7. Text Files\Text-Files-Homework\ReplaceStartWithFinish\07. ReplaceStartWithFinish.csproj</ProjectFullName>
+        <IgnoredElement>
+          <Column>38</Column>
+          <Text>Unknown constructor &lt;/C&gt;FileStream(string, System.IO.FileAccess)&lt;//C&gt; of &lt;/C&gt;System.IO.FileStream&lt;//C&gt;</Text>
+          <Line>11</Line>
+        </IgnoredElement>
+        <IgnoredElement>
+          <Column>57</Column>
+          <Text>Move Variable Declaration To Parameter</Text>
+          <Line>11</Line>
+        </IgnoredElement>
+        <IgnoredElement>
+          <Column>13</Column>
+          <Text>Use explicitly typed local variable declaration</Text>
+          <Line>11</Line>
+        </IgnoredElement>
+      </FilePath>
+    </IgnoredErrorsAndWarnings>
+  </IgnoredErrorsAndWarningsSettings>
+</JustCodeSettings>
