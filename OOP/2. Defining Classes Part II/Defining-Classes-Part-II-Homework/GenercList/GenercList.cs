@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GenercList
 {
-    class GenercList<T>
-        where T: IComparable
+    public class GenercList<T>
+        where T: IComparable<T>
     {
         private int count;
         private int capacity;
@@ -19,7 +19,6 @@ namespace GenercList
             this.capacity = capacity;
             count = 0;
         }
-
         public int Count
         {
             get
@@ -38,38 +37,43 @@ namespace GenercList
         {
             get
             {
-                if (index >= count)
-                {
-                    throw new IndexOutOfRangeException();
-                }
-                else
-                {
-                    return this.list[index];
-                }
+                CheckIndex(index);
+                return this.list[index];
+            }
+            set
+            {
+                CheckIndex(index);
+                this.list[index] = value;
             }
         }
-        public void Add(T element)
-        {
-            list[count] = element;
-            count++;
-        }
-        public void RemoveAt(int index)
+        private void CheckIndex(int index)
         {
             if (index >= count)
             {
                 throw new IndexOutOfRangeException();
             }
-            else
+        }
+        public void Add(T element)
+        {
+            if (count == capacity)
             {
-                for (int i = index + 1; i < count; i++)
-                {
-                    list[i - 1] = list[i];
-                }
-                count--;
+                AutoGrow();
             }
+            list[count] = element;
+            count++;
+        }
+        public void RemoveAt(int index)
+        {
+            CheckIndex(index);
+            for (int i = index + 1; i < count; i++)
+            {
+                list[i - 1] = list[i];
+            }
+            count--;
         }
         public void Insert(int index, T element)
         {
+            CheckIndex(index);
             if (count == capacity)
             {
                 AutoGrow();
@@ -98,7 +102,7 @@ namespace GenercList
                 }
             }
             return index;
-        }   
+        }
         public T Min<T2>()
             where T2 : IComparable<T2>
         {
@@ -109,8 +113,7 @@ namespace GenercList
             int min = 0;
             for (int i = 0; i < count; i++)
             {
-
-                if ( list[min].CompareTo(list[i]) > 0 )
+                if (list[min].CompareTo(list[i]) > 0)
                 {
                     min = i;
                 }

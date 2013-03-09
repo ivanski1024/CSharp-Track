@@ -16,6 +16,5 @@ namespace GenercList
             a.Add("5");
             Console.WriteLine(a.Min<string>());
         }
-
     }
 }
