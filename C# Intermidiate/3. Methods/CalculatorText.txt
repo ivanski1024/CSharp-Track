@@ -1,7 +1,0 @@
-Calculator v1.0
-by IAP
-
-Menu:
-1. Reversing integer
-2. Avarege of integers
-3. Solve a linear equation (a*x + b = 0)
