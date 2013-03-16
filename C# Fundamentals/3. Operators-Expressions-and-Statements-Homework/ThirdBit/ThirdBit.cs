@@ -2,7 +2,6 @@
 class ThirdBit
 {
     static void Main()
-
     {
         int a = int.Parse(Console.ReadLine());
         int p = 2;

@@ -7,7 +7,7 @@ class PBitIs1
         int v = int.Parse(Console.ReadLine());
         Console.Write("p=");
         int p = int.Parse(Console.ReadLine());
-        int myBit = ( (( v & (1 << p) ) >> p) == 1);
+        int myBit = ((v & (1 << p)) >> p);
         Console.WriteLine(myBit);
     }
 }

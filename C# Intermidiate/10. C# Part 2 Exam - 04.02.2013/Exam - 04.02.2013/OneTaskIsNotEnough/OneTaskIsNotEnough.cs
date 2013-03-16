@@ -166,24 +166,34 @@ namespace OneTaskIsNotEnough
         }
         static int Lamps(int n)
         {
-            List<int> lamps = new List<int>();
+            LinkedList<int> lamps = new LinkedList<int>();
             for (int i = 0; i < n; i++)
             {
-                lamps.Add(i + 1);
+                lamps.AddLast(i + 1);
+                //lamps.Add
             }
             int during = 2;
+            while (lamps.Count > 1)
+            {
+                for (int i = 0; i < lamps.Count; i+=during)
+                {
+                    lamps.Remove(lamps.ElementAt<int>(i)) ;
+                    i--;
+                }
+                during++;
+            }
+            return lamps.ElementAt<int>(0);
 
+
+
+            /*
 
             bool enter = false;
             while (lamps.Count > 1)
             {
                 enter = false;
-                List<int> turnedOn = new List<int>();
-                List<int> newLamps = new List<int>();
-                for (int i = 0; i < lamps.Count; i += during)
-                {
-                    turnedOn.Add(lamps[i]);
-                }
+                LinkedList<int> turnedOn = new LinkedList<int>();
+                
                 int l = 0;
                 for (int i = 0; i < lamps.Count; i++)
                 {
@@ -218,6 +228,7 @@ namespace OneTaskIsNotEnough
             }
 
             return lamps[0];
+             */
         }
         static int GCD(int x, int y)
         {
@@ -229,6 +240,7 @@ namespace OneTaskIsNotEnough
                 y = temp % y;
             }
             return x;
+             
         }
     }
 }

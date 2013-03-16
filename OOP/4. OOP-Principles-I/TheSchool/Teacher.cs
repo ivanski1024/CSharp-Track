@@ -58,5 +58,10 @@ namespace TheSchool
             this.disciplines = disciplines;
             comment = null;
         }
+
+        public void AddDiscipline(Discipline discipline)
+        {
+            disciplines.Add(discipline);
+        }
     }
 }

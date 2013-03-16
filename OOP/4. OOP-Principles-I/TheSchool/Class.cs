@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace TheSchool
 {
+    class ElementAlreadyExists : System.Exception
+    {
+        
+    }
     class Class
     {
         private List<Student> students;
@@ -22,17 +26,19 @@ namespace TheSchool
                 this.students = value;
             }
         }
+
         public List<Teacher> Teachers
         {
             get 
             {
                 return this.teachers;
             }
-            set 
+            set
             {
                 this.teachers = value;
             }
         }
+
         public string Comment
         {
             get
@@ -57,5 +63,19 @@ namespace TheSchool
             this.teachers = teachers;
             comment = null;
         }
+
+        public void AddTeacher(Teacher teacher)
+        {
+            if(teachers.IndexOf(teacher)<0)
+            {
+                teachers.Add(teacher);
+            }
+            else
+            {
+                throw new ElementAlreadyExists();
+            }
+        }
+
+    
     }
 }

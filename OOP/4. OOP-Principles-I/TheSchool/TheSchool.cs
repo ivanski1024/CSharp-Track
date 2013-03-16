@@ -10,15 +10,12 @@ namespace TheSchool
     {
         static void Main(string[] args)
         {
-            List<Discipline> disciplines = new List<Discipline>();
-            disciplines.Add(new Discipline("HTML", 1, 1));
-            Teacher nakov = new Teacher("Svetlin", "Nakov", disciplines);
-            Console.WriteLine(nakov.Disciplines.Count);
-
-
-            nakov.Disciplines.Add(new Discipline("OOP", 1, 1));
-            Console.WriteLine(nakov.Disciplines.Count);
-            Console.WriteLine(nakov.LastName);
+            List<Student> students = new List<Student>();
+            students.Add(new Student("Ivan", "Petrov", 1001365));
+            Class myClass = new Class(students);
+            Teacher nakov = new Teacher("Svetlin", "Nakov");
+            myClass.AddTeacher(nakov);
+            myClass.AddTeacher(nakov);
         }
     }
 }
