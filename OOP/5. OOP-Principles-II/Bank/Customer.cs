@@ -5,7 +5,6 @@ namespace Bank
 {
     abstract class Customer
     {
-
         private readonly string name;
 
         public Customer(string name)

@@ -37,6 +37,11 @@ namespace AcademyPopcorn
                     engine.AddObject(currBlock);
                 }
             }
+
+
+            engine.AddObject(new UnpassableBlock(new MatrixCoords(WorldRows - 6, WorldCols - 11)));
+            engine.AddObject(new UnpassableBlock(new MatrixCoords(startRow - 2, 9)));
+            engine.AddObject(new UnpassableBlock(new MatrixCoords(startRow + 2, 13)));
             //========================================
 
 

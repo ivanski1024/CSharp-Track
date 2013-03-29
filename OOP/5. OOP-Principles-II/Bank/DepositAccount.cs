@@ -13,7 +13,7 @@ namespace Bank
 
         public override decimal CalculateInterest(uint numberOfMonths)
         {
-            if (this.ballance > 0 && this.ballance < DepositAccount.minimumSumForInterest)
+            if (this.Ballance > 0 && this.Ballance < DepositAccount.minimumSumForInterest)
             {
                 return 0;
             }
@@ -21,6 +21,10 @@ namespace Bank
             {
                 return base.CalculateInterest(numberOfMonths);
             }
+        }
+        public void Withdraw(decimal amount)
+        {
+            this.Ballance -= amount;
         }
     }
 }

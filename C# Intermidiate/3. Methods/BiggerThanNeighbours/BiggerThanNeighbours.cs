@@ -11,32 +11,32 @@ namespace BiggerThanNeighbours
         static void Main()
         {
             int n = int.Parse(Console.ReadLine());
-            int[] arr = new int[n];
+            int[] array = new int[n];
             for (int i = 0; i < n; i++)
             {
-                arr[i] = int.Parse(Console.ReadLine());
+                array[i] = int.Parse(Console.ReadLine());
             }
             int k = int.Parse(Console.ReadLine());
-            Console.WriteLine(biggerThanNeighbours(arr, k));
+            Console.WriteLine(biggerThanNeighbours(array, k));
         }
 
-        static bool biggerThanNeighbours(int[] arr, int k)
+        static bool biggerThanNeighbours(int[] array, int k)
         {
-            if(k>0 && k < arr.Length-1)
+            if(k>0 && k < array.Length-1)
             {
-                return arr[k] > arr[k - 1] && arr[k] > arr[k + 1];
+                return array[k] > array[k - 1] && array[k] > array[k + 1];
             }
             else if (k == 0)
             {
-                return arr[k] > arr[k + 1];
+                return array[k] > array[k + 1];
             }
-            else if (k == arr.Length - 1)
+            else if (k == array.Length - 1)
             {
-                return arr[k] > arr[k - 1];
+                return array[k] > array[k - 1];
             }
             else
             {
-                Console.WriteLine("Index out of the range of the array!");
+                Console.WriteLine("Index out of the range of the arrayay!");
                 return false;
             }
         }

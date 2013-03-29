@@ -5,56 +5,25 @@ namespace Bank
 {
     abstract class Account
     {
-        protected Customer customer;
-        protected decimal ballance;
-        protected decimal interestRate;
-        protected int activeTime = 0;
+        public Customer Customer { get; protected set; }
+        public decimal Ballance { get; protected set; }
+        public decimal InterestRate { get; protected set; }
 
         protected Account(Customer customer, decimal ballance, decimal interestRate)
         {
-            this.customer = customer;
-            this.ballance = ballance;
-            this.interestRate = interestRate;
-            this.activeTime = 0;
-        }
-
-        public Customer Customer
-        {
-            get
-            {
-                return this.customer;
-            }
-            protected set 
-            {
-                this.customer = value;
-            }
-        }
-        public decimal Ballance
-        {
-            get
-            {
-                return this.ballance;
-            }
-            protected set
-            {
-                this.ballance = value;
-            }
-        }
-        public decimal InterestRate
-        {
-            get 
-            {
-                return this.interestRate;
-            }
-            protected set
-            {
-                this.interestRate = value;
-            }
+            this.Customer = customer;
+            this.Ballance = ballance;
+            this.InterestRate = interestRate;
         }
 
         public virtual decimal CalculateInterest(uint numberOfMonths)
         {
-            return this.interestRate * this.Ballance * numberOfMonths;
+            return this.InterestRate * this.Ballance * numberOfMonths;
+        }
+
+        public virtual void Deposit(decimal amount)
+        {
+            this.Ballance += amount;
         }
     }
 }

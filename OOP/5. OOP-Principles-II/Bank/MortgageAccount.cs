@@ -9,15 +9,22 @@ namespace Bank
             : base(customer, ballance, interestRate)
         { }
 
+
+        private static readonly uint individualSpecialMonthsCount = 6;
+        private readonly decimal individualSpecialInterestRate = 0;
+
+        private static readonly uint companiesSpecialMonthsCount = 12;
+        private readonly decimal companySpecialInterestRate = 0.5m;
+
         public override decimal CalculateInterest(uint numberOfMonths)
         {
-            if (this.customer is Person)
+            if (this.Customer is Person)
             {
-                return CalculateInterestDependingOnTime(numberOfMonths, 6, 0);
+                return CalculateInterestDependingOnTime(numberOfMonths, individualSpecialMonthsCount, individualSpecialInterestRate);
             }
-            else if (this.customer is Company)
+            else if (this.Customer is Company)
             {
-                return CalculateInterestDependingOnTime(numberOfMonths, 12, 0.5m);
+                return CalculateInterestDependingOnTime(numberOfMonths, companiesSpecialMonthsCount, companySpecialInterestRate);
             }
             else
             {
@@ -26,23 +33,16 @@ namespace Bank
         }
         public decimal CalculateInterestDependingOnTime(uint numberOfMonths, uint specialMonthsCount, decimal specialInterest)
         {
-            if (activeTime > specialMonthsCount)
+            decimal newInterest = this.InterestRate * specialInterest;
+
+            if (numberOfMonths < specialMonthsCount)
             {
-                return base.CalculateInterest(numberOfMonths);
+                return numberOfMonths * newInterest * this.Ballance;
             }
             else
             {
-                if (activeTime + numberOfMonths < specialMonthsCount)
-                {
-                    return (this.activeTime + numberOfMonths) * specialInterest * this.ballance;
-                }
-                else
-                {
-                    return base.CalculateInterest(activeTime + numberOfMonths - specialMonthsCount) + (specialMonthsCount-activeTime)*specialInterest*this.ballance;
-                }
+                return base.CalculateInterest(numberOfMonths - specialMonthsCount) + specialMonthsCount * newInterest * this.Ballance;
             }
-            
         }
-
     }
 }
