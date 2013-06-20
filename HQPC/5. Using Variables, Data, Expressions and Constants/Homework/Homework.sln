@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RotatedFigures", "RotatedFigures\RotatedFigures.csproj", "{89E8FA76-CF79-4457-865A-95FF9D37E8CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatisticsPrinter", "StatisticsPrinter\StatisticsPrinter.csproj", "{FA530CC0-94FD-475B-BC58-B9269FDF5BC2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89E8FA76-CF79-4457-865A-95FF9D37E8CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E8FA76-CF79-4457-865A-95FF9D37E8CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E8FA76-CF79-4457-865A-95FF9D37E8CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E8FA76-CF79-4457-865A-95FF9D37E8CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA530CC0-94FD-475B-BC58-B9269FDF5BC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA530CC0-94FD-475B-BC58-B9269FDF5BC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA530CC0-94FD-475B-BC58-B9269FDF5BC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA530CC0-94FD-475B-BC58-B9269FDF5BC2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
