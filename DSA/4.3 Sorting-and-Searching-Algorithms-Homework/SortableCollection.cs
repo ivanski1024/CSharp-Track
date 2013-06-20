@@ -32,7 +32,14 @@
 
         public bool LinearSearch(T item)
         {
-            throw new NotImplementedException();
+            for (int index = 0; index < this.Items.Count; index++)
+            {
+                if (this.Items[index].Equals(item))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool BinarySearch(T item)

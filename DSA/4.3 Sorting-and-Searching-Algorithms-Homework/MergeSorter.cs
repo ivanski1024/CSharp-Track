@@ -10,79 +10,116 @@
     {
         public void Sort(IList<T> collection)
         {
-            MergeSort(collection);
+            T[] boofArray = new T[collection.Count];
+
+            collection.CopyTo(boofArray, 0);
+
+            T[] sortedArray = MergeSort(boofArray);
+
+            ReplaceCollection(collection, sortedArray);
         }
-        private IList<T> MergeSort(IList<T> collection)
+
+        private T[] MergeSort(T[] array)
         {
+            int Length = array.Length;
+            bool ArrayIsWithEvenLength = (Length % 2) == 0;
 
-            
-
-
-            // if list size is 0 (empty) or 1, consider it sorted
-            // (using less than or equal prevents infinite recursion for a zero length m)
-            if (collection.Count <= 1)
+            if (Length <= 1)
             {
-                return collection;
+                return array;
             }
             else
             {
-                // else list size is > 1, so split the list into two sublists
-                IList<T> left = collection.Where<T>(
-                    , right;
-                int middle = collection.Count / 2;
-                // recursively call merge_sort() to further split each sublist
-                // until sublist size is 1
+                T[] left, right;
+
+                if (ArrayIsWithEvenLength)
+                {
+                    right = new T[Length / 2];
+                }
+                else
+                {
+                    right = new T[Length / 2 + 1];
+                    right[Length / 2] = array[Length - 1];
+                }
+                left = new T[Length / 2];
+
+                for (int index = 0; index < Length / 2; index++)
+                {
+                    left[index] = array[index];
+                    right[index] = array[Length / 2 + index];
+                }
+
                 left = MergeSort(left);
                 right = MergeSort(right);
-                // merge the sublists returned from prior calls to merge_sort()
-                // and return the resulting merged sublist
+
                 return Merge(left, right);
             }
         }
 
-
-        //private IList<T> Merge(IList<T> left, IList<T> right)
-        //{
-        //    IList<T> result;
-        //    while length(left) > 0 or length(right) > 0
-        //        if length(left) > 0 and length(right) > 0
-        //            if first(left) <= first(right)
-        //                append first(left) to result
-        //                left = rest(left)
-        //            else
-        //                append first(right) to result
-        //                right = rest(right)
-        //        else if length(left) > 0
-        //            append first(left) to result
-        //            left = rest(left)
-        //        else if length(right) > 0
-        //            append first(right) to result
-        //            right = rest(right)
-        //    end while
-        //    return result;
-        //}
-
-
-
-        public static IList<T> Subsequance<T>(this IList<T> collection, int from, int to)
+        private T[] Merge(T[] left, T[] right)
         {
-            int length = collection.Count;
+            int leftLength = left.Length;
+            int rightLength = right.Length;
+            int length = leftLength + rightLength;
 
-            if (from < 0 || length <= from)
+            T[] merged = new T[length];
+
+            int leftIndex = 0;
+            int rightIndex = 0;
+
+            for (int index = 0; index < length; index++)
             {
-                throw new ArgumentOutOfRangeException("'from' is out of the boundries of the collection");
+                if (leftIndex < leftLength && rightIndex < rightLength)
+                {
+                    if (left[leftIndex].CompareTo(right[rightIndex]) <= 0)
+                    {
+                        merged[index] = left[leftIndex];
+                        leftIndex++;
+                    }
+                    else
+                    {
+                        merged[index] = right[rightIndex];
+                        rightIndex++;
+                    }
+                }
+                else if (leftIndex >= leftLength)
+                {
+                    merged[index] = right[rightIndex];
+                    rightIndex++;
+                }
+                else
+                {
+                    merged[index] = left[leftIndex];
+                    leftIndex++;
+                }
             }
-            else if (to < 0 || length <= to)
+            return merged;
+        }
+
+        private T Min(T t1, T t2)
+        {
+            if (t1.CompareTo(t2) <= 0)
             {
-                throw new ArgumentOutOfRangeException("'to' is out of the boundries of the collection");
-            }
-            else if (to < from)
-            {
-                throw new ArgumentOutOfRangeException("'from' should be less than 'to'");
+                return t1;
             }
             else
             {
-                
+                return t2;
+            }
+        }
+
+        private void ReplaceCollection(IList<T> collection, T[] sortedArray)
+        {
+            if (collection.Count != sortedArray.Length)
+            {
+                throw new ArgumentException("The collections in the arguments are not with the same length!");
+            }
+            else
+            {
+                for (int index = 0; index < collection.Count; index++)
+                {
+                    collection[index] = sortedArray[index];
+                }
             }
         }
     }
