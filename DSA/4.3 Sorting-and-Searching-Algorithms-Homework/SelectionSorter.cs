@@ -25,7 +25,7 @@
             }
         }
 
-        private void SwitchElementsInCollection(IList<T> collection, int firstIndex, int secondIndex)
+        public static void SwitchElementsInCollection(IList<T> collection, int firstIndex, int secondIndex)
         {
             T boof = collection[firstIndex];
             collection[firstIndex] = collection[secondIndex];
