@@ -44,12 +44,19 @@
 
         public bool BinarySearch(T item)
         {
-            throw new NotImplementedException();
+            return BinarySearch(item, 0, this.Items.Count - 1);
         }
 
         public void Shuffle()
         {
-            throw new NotImplementedException();
+            int length = this.Items.Count;
+            for (int index = 0; index < length; index++)
+            {
+                int randomIndex = index + GetRandomInt(0, length - index);
+                T boof = this.Items[index];
+                this.Items[index] = this.Items[randomIndex];
+                this.Items[randomIndex] = boof;
+            }
         }
 
         public void PrintAllItemsOnConsole()
@@ -68,5 +75,38 @@
 
             Console.WriteLine();
         }
+
+        private bool BinarySearch(T item, int startIndex, int endIndex)
+        {
+            if (startIndex == endIndex)
+            {
+                return this.Items[startIndex].Equals(item);
+            }
+            else
+            {
+                int centerIndex = startIndex + (endIndex - startIndex) / 2;
+
+                int compareOutput = this.Items[centerIndex].CompareTo(item);
+                if (compareOutput == 0)
+                {
+                    return true;
+                }
+                else if (compareOutput > 0)
+                {
+                    return BinarySearch(item, startIndex, centerIndex - 1);
+                }
+                else
+                {
+                    return BinarySearch(item, centerIndex + 1, endIndex);
+                }
+            }
+        }
+
+        private static int GetRandomInt(int start, int end)
+        {
+            return randomGenerator.Next(start, end);
+        }
+
+        private static readonly Random randomGenerator = new Random();
     }
 }
